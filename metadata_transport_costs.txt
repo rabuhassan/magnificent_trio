@@ -1,0 +1,10 @@
+﻿Metadata for transport_costs
+
+
+Shipping freight is calculated as a ship departing from New York to the specific port stated in the Excel file.
+Standard 40 feet containers
+Costs calculated as per region with main ports in that region.
+Road transport costs do not include port fees, taxes, insurance, road assistance, toll gates, border costs, fuel, and so forth. It is a flat rate.
+Shipping fees do not include border costs, taxes, insurance, delays due to bad weather and so forth.
+No information was provided for North America as S2S can use their own resources.
+Inflation rates and exchange rates were not taken into consideration when calculating the freight and road costs

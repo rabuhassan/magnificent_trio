@@ -1,0 +1,33 @@
+SELECT *
+FROM transport_costs;
+
+
+--add a column
+ALTER TABLE transport_costs
+ADD total_sea_freight_cost NUMERIC;
+
+UPDATE transport_costs
+SET total_sea_freight_cost = "sea freight cost" * 8
+WHERE total_sea_freight_cost IS NULL;
+
+--add a column
+ALTER TABLE transport_costs
+ADD total_road_transport_cost NUMERIC;
+
+UPDATE transport_costs
+SET total_road_transport_cost = "road transport cost per km" * 10000
+WHERE total_road_transport_cost IS NULL;
+
+--add a column
+ALTER TABLE transport_costs
+ADD total_export_costs NUMERIC;
+
+UPDATE transport_costs
+SET total_export_costs = ("sea freight cost" * 8) + ("road transport cost per km" * 10000)
+WHERE total_export_costs IS NULL;
+
+SELECT *
+FROM transport_costs;
+
+SELECT region, SUM("total_export_costs") FROM "transport_costs" GROUP BY region;
+ 
