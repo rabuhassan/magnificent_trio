@@ -10,12 +10,11 @@
 # In[3]:
 
 
-# Import Necessary Libraries. 
+# Import necessary libraries. 
 import numpy as np
 import pandas as pd
 
-# Load the database and create the DataFrame
-
+# Load the database and create the DataFrame.
 transport_costs = pd.read_excel('transport_costs.xlsx')
 print(f'transport_costs has {transport_costs.shape[1]} columns, and {transport_costs.shape[0]} rows.')
 print(f'It has the following columns: \n{transport_costs.columns}')
@@ -31,7 +30,6 @@ transport_costs.head()
 
 
 # Subset to drop currency and distance unit. 
-
 transport = transport_costs[['region', 'country', 'port', 
                              'sea freight cost',
                              'road transport cost per km']]
@@ -44,8 +42,7 @@ transport
 
 
 # Create two functions to calculate:
-
-#total_sea_freight_costs, and 
+#total_sea_freight_costs
 def tsfc(x):
     """Calculates the total_sea_freight_cost as =
     sea freight cost x 2 x 4 """
@@ -74,14 +71,13 @@ transport
 
 
 #  Calculate the total_export_costs.  
-
 transport['total_export_costs'] = transport['total_sea_freight_cost'] + transport['total_road_transport_cost']
 
 
 # In[18]:
 
 
-# Reorder transsport DataFrame and add columns.  
+# Reorder transport DataFrame and add columns.  
 
 transport = transport[['region', 'country', 'port', 'sea freight cost',
                              'road transport cost per km', 'total_sea_freight_cost',
@@ -101,8 +97,7 @@ transport.to_csv('python_transport.csv', index=False)
 # In[20]:
 
 
-# Cost of Exports per Region
-
+# Cost of exports per Region
 region_export_cost = transport.groupby(['region'])['total_export_costs'].sum()
 region_export_cost
 
